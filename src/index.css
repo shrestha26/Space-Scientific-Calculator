@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-space-dark text-white antialiased;
+    font-feature-settings: "liga" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-space-blue/60 backdrop-blur-md rounded-2xl border border-space-indigo/20 shadow-lg p-6;
+  }
+
+  .button-primary {
+    @apply bg-space-indigo hover:bg-space-indigo/80 text-white font-medium py-2 px-4 rounded-lg 
+           transition-all duration-300 focus:ring-2 focus:ring-space-indigo/50 focus:outline-none;
+  }
+
+  .button-secondary {
+    @apply bg-transparent hover:bg-space-indigo/20 border border-space-indigo/40 text-white 
+           font-medium py-2 px-4 rounded-lg transition-all duration-300 focus:ring-2 
+           focus:ring-space-indigo/50 focus:outline-none;
+  }
+
+  .input-field {
+    @apply bg-space-darker border border-space-indigo/30 text-white rounded-lg px-3 py-2 
+           focus:ring-2 focus:ring-space-accent/50 focus:border-space-accent/50 focus:outline-none 
+           transition-all duration-300;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-space-accent to-space-earth;
+  }
+}
+
+/* Star field background */
+.stars-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -10;
+  background: radial-gradient(ellipse at bottom, #12132e 0%, #090a1a 100%);
+}
+
+.star {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0;
+  animation: twinkle var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: var(--opacity);
+  }
+}
